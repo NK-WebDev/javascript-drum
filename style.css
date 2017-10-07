@@ -1,6 +1,6 @@
 html {
   font-size: 10px;
-  background: url(http://i.imgur.com/b9r5sEL.jpg) bottom center;
+  background: url('img/drum-bg.jpeg')  no-repeat bottom center;
   background-size: cover;
 }
 body,html {
@@ -8,13 +8,32 @@ body,html {
   padding: 0;
   font-family: sans-serif;
 }
-
+h1{
+  text-align: center;
+  color: #ffc600;
+  font-size: 4rem;
+}
+.drum-icon{
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 2rem;
+}
+.instructions{
+  font-size: 2.5rem;
+  text-align: center;
+  color: #fcfcfc;
+  background: rgba(0,0,0,0.4);
+  padding: 1rem 0;
+}
 .keys {
   display: flex;
-  flex: 1;
-  min-height: 100vh;
   align-items: center;
   justify-content: center;
+  max-width: 500px;
+  margin: 10rem auto;
+  flex-wrap: wrap;
 }
 
 .key {
@@ -22,13 +41,17 @@ body,html {
   border-radius: .5rem;
   margin: 1rem;
   font-size: 1.5rem;
-  padding: 1rem .5rem;
-  transition: all .07s ease;
   width: 10rem;
+  height: 8rem;
+  transition: all .07s ease;
   text-align: center;
   color: white;
   background: rgba(0,0,0,0.4);
   text-shadow: 0 0 .5rem black;
+  cursor: pointer;
+}
+.key:hover{
+  background:rgba(0,0,0,0.9);
 }
 
 .playing {
@@ -47,4 +70,24 @@ kbd {
   text-transform: uppercase;
   letter-spacing: .1rem;
   color: #ffc600;
+}
+
+footer{
+  text-align: center;
+  background: rgba(0,0,0,0.4);
+  color:#ffc600;
+  font-size: 1.5rem;
+  padding: 1rem 0;
+}
+footer a{
+  color: #ffc600;
+}
+@media screen and (max-width: 500px){
+  .keys{
+    max-width: 100%;
+  }
+  .key{
+    width: 8rem;
+    height: 8rem;
+  }
 }

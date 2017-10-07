@@ -2,12 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- facebook open graph meta tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nk-webdev.github.io/javascript-drum">
+  <meta property="og:title" content="A Drum app created with javascript by Nirjan Khadka">
+  <meta property="og:image" content="http://nk-webdev.github.io/javascript-drum/img/screenshot.jpg">
+  <meta property="og:image:secure_url" content="https://nk-webdev.github.io/javascript-drum/img/screenshot.jpg" />
+  <meta property="og:image:width" content="1400">
+  <meta property="og:image:height" content="653">
+  <meta property="og:image:type" content="image/jpg">
+  <meta property="og:description" content="Checkout a drum app I made using javascript">
   <title>JS Drum Kit</title>
   <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-
-
+<img class="drum-icon" src="img/drum-icon.png" alt="">
+<h1>Javascript Drum App</h1>
+<p class="instructions">Press or click any of the following keys to start</p>
   <div class="keys">
     <div data-key="65" class="key">
       <kbd>A</kbd>
@@ -56,7 +69,10 @@
   <audio data-key="74" src="sounds/snare.wav"></audio>
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
-
+<footer>
+  <h2>Coded By <a href="https://thenkway.wordpress.com" target="_blank">Nirjan Khadka</a></h2>
+  <p>This was coded while learning a course called javascript30 <a href="https://javascript30.com/" target="_blank">Try it here.</a></p>
+</footer>
 <script>
   const keys = document.querySelectorAll('.key');
   function removeTransition(e){
@@ -64,6 +80,14 @@
       return;
     }
     this.classList.remove('playing');
+  }
+  function soundOnClick(){
+    const dataKey = this.getAttribute('data-key');
+    const audio = document.querySelector(`audio[data-key="${dataKey}"
+    ]`);
+    audio.currentTime = 0; // if user presses key repeatedly rewind the sound
+    audio.play();
+    this.classList.add('playing');
   }
   function playSound(e){
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"
@@ -77,6 +101,7 @@
   }
   window.addEventListener('keydown',playSound);
   keys.forEach(key => key.addEventListener('transitionend',removeTransition));
+  keys.forEach(key => key.addEventListener('click',soundOnClick));
 </script>
 
 
