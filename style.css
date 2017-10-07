@@ -28,11 +28,11 @@ h1{
   top: 2rem;
 }
 .instructions{
+  padding: 0 10rem;
   font-size: 2.5rem;
   text-align: center;
   color: #fcfcfc;
   background: rgba(0,0,0,0.4);
-  padding: 1rem 0;
 }
 .keys {
   display: -webkit-box;
