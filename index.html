@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,12 +16,24 @@
   <meta property="og:description" content="Checkout a drum app I made using javascript">
   <title>JS Drum Kit</title>
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 
 </head>
+
 <body>
-<img class="drum-icon" src="img/drum-icon.png" alt="">
-<h1>Javascript Drum App</h1>
-<p class="instructions">Press or click any of the following keys to start</p>
+  <audio data-key="65" src="sounds/clap.wav"></audio>
+  <audio data-key="83" src="sounds/hihat.wav"></audio>
+  <audio data-key="68" src="sounds/kick.wav"></audio>
+  <audio data-key="70" src="sounds/openhat.wav"></audio>
+  <audio data-key="71" src="sounds/boom.wav"></audio>
+  <audio data-key="72" src="sounds/ride.wav"></audio>
+  <audio data-key="74" src="sounds/snare.wav"></audio>
+  <audio data-key="75" src="sounds/tom.wav"></audio>
+  <audio data-key="76" src="sounds/tink.wav"></audio>
+  <img class="bg-image" src="img/drum-bg.jpeg" alt="a backgound image of a drum" srcset="img/drum-bg-small.jpeg 500w,img/drum-bg-medium.jpeg 1300w,img/drum-bg.jpeg 1800w">
+  <img class="drum-icon" src="img/drum-icon.png" alt="">
+  <h1>Javascript Drum App</h1>
+  <p class="instructions">Press or click any of the following keys to start</p>
   <div class="keys">
     <div data-key="65" class="key">
       <kbd>A</kbd>
@@ -59,51 +72,10 @@
       <span class="sound">tink</span>
     </div>
   </div>
-
-  <audio data-key="65" src="sounds/clap.wav"></audio>
-  <audio data-key="83" src="sounds/hihat.wav"></audio>
-  <audio data-key="68" src="sounds/kick.wav"></audio>
-  <audio data-key="70" src="sounds/openhat.wav"></audio>
-  <audio data-key="71" src="sounds/boom.wav"></audio>
-  <audio data-key="72" src="sounds/ride.wav"></audio>
-  <audio data-key="74" src="sounds/snare.wav"></audio>
-  <audio data-key="75" src="sounds/tom.wav"></audio>
-  <audio data-key="76" src="sounds/tink.wav"></audio>
-<footer>
-  <h2>Coded By <a href="https://thenkway.wordpress.com" target="_blank">Nirjan Khadka</a></h2>
-  <p>This was coded while learning a course called javascript30 <a href="https://javascript30.com/" target="_blank">Try it here.</a></p>
-</footer>
-<script>
-  const keys = document.querySelectorAll('.key');
-  function removeTransition(e){
-    if (e.propertyName !== 'transform') {
-      return;
-    }
-    this.classList.remove('playing');
-  }
-  function soundOnClick(){
-    const dataKey = this.getAttribute('data-key');
-    const audio = document.querySelector(`audio[data-key="${dataKey}"
-    ]`);
-    audio.currentTime = 0; // if user presses key repeatedly rewind the sound
-    audio.play();
-    this.classList.add('playing');
-  }
-  function playSound(e){
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"
-    ]`);
-    const key = document.querySelector(`.key[data-key="${e.keyCode}"
-    ]`);
-    if (!audio) return; // if user presses key with no sound exit the function
-    audio.currentTime = 0; // if user presses key repeatedly rewind the sound
-    audio.play();
-    key.classList.add('playing');
-  }
-  window.addEventListener('keydown',playSound);
-  keys.forEach(key => key.addEventListener('transitionend',removeTransition));
-  keys.forEach(key => key.addEventListener('click',soundOnClick));
-</script>
-
-
+  <footer>
+    <h2>Coded By <a href="https://thenkway.wordpress.com" target="_blank">Nirjan Khadka</a></h2>
+    <p>This was coded while learning a course called javascript30 <a href="https://javascript30.com/" target="_blank">Try it here.</a></p>
+  </footer>
 </body>
+
 </html>
